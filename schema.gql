@@ -1,0 +1,91 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Task {
+  """Task Id"""
+  id: String!
+
+  """Task Name"""
+  name: String!
+
+  """Task Status"""
+  status: String
+
+  """Task parent"""
+  parent: String
+}
+
+type Comment {
+  """Comment Id"""
+  id: String!
+
+  """Comment content"""
+  content: String!
+
+  """Comment Task Id"""
+  task: String!
+
+  """Comment parent"""
+  parent: String
+}
+
+type Query {
+  tasks: [Task!]!
+  task(id: String!): Task!
+  comments: [Comment!]!
+  comment(id: String!): Comment!
+}
+
+type Mutation {
+  createTask(createTaskInput: CreateTaskInput!): Task!
+  updateTask(updateTaskInput: UpdateTaskInput!): Task!
+  updateTaskStatus(updateTasksStatusInput: UpdateTaskStatusInput!): Task!
+  removeTask(id: String!): Task!
+  createComment(createCommentInput: CreateCommentInput!): Comment!
+  updateComment(updateCommentInput: UpdateCommentInput!): Comment!
+  removeComment(id: String!): Comment!
+}
+
+input CreateTaskInput {
+  """Task Name"""
+  name: String!
+
+  """Task parent"""
+  parent: String
+}
+
+input UpdateTaskInput {
+  id: String!
+
+  """Task Name"""
+  name: String!
+}
+
+input UpdateTaskStatusInput {
+  id: String
+
+  """Task Name"""
+  name: String
+
+  """Task Status"""
+  status: String!
+}
+
+input CreateCommentInput {
+  """Comment content"""
+  content: String!
+
+  """Id of the commented task"""
+  task: String!
+
+  """Comment parent"""
+  parent: String
+}
+
+input UpdateCommentInput {
+  id: String!
+
+  """Comment content"""
+  content: String!
+}
